@@ -20,7 +20,7 @@
 ACLOCAL_AMFLAGS = -I m4
 
 EXTRA_DIST = bootstrap
-SUBDIRS = src
+SUBDIRS = src/tests/
 #.PHONY : doc
 #
 #doc:

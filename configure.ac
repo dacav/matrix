@@ -22,7 +22,7 @@ AC_INIT([matrix], [0.0.1], [simgidacav@gmail.com])
 
 AM_INIT_AUTOMAKE([-Wall])
 
-AC_CONFIG_SRCDIR([src/matrix/matrix.hpp])
+AC_CONFIG_SRCDIR([src/matrix/vector.hpp])
 AC_CONFIG_HEADERS([src/config.h])
 
 AC_CONFIG_MACRO_DIR([m4])
@@ -44,6 +44,6 @@ AC_FUNC_MALLOC
 #AC_CHECK_FUNCS([dup2 setenv strdup])
 
 AC_CONFIG_FILES([Makefile
-                src/Makefile])
+                 src/tests/Makefile])
 
 AC_OUTPUT

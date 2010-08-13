@@ -18,11 +18,13 @@
 # 
 
 AM_CXXFLAGS = -I$(top_srcdir)/src/ -I./ -Wall -Werror
+AM_LDDFLAGS = -L$(top_srcdir)/src/ -L./ -L../
 
-#check_PROGRAMS = 
+check_PROGRAMS = test_base \
+                 test_exceptions
 
-#TESTS = $(check_PROGRAMS)
-#AM_LDFLAGS = -L$(top_srcdir)/libdacav/ -L./ -L../
+TESTS = $(check_PROGRAMS)
 #LDADD = -lmatrix
 
-#test00_SOURCES = test00.c
+test_base_SOURCES = test_base.cpp
+test_exceptions_SOURCES = test_exceptions.cpp

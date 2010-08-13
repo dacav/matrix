@@ -21,9 +21,9 @@ SUBDIRS = tests
 AM_CXXFLAGS = -I./ -Wall -Werror
 lib_LTLIBRARIES = libmatrix.la
 
-nobase_include_HEADERS = matrix/matrix.hpp
+nobase_include_HEADERS = matrix/vector.hpp \
+                         matrix/vector.impl.hpp
 
-libmatrix_la_SOURCES = $(include_HEADERS) \
-                      matrix.cpp
+libmatrix_la_SOURCES = $(include_HEADERS)
 
 libmatrix_la_LDFLAGS = -release @PACKAGE_VERSION@ -version 0:0:0
