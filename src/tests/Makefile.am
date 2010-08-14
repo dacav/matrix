@@ -20,11 +20,13 @@
 AM_CXXFLAGS = -I$(top_srcdir)/src/ -I./ -Wall -Werror
 AM_LDDFLAGS = -L$(top_srcdir)/src/ -L./ -L../
 
-check_PROGRAMS = test_base \
-                 test_exceptions
+check_PROGRAMS = 01_vector_base \
+                 02_vector_exceptions \
+                 03_matrix_base
 
 TESTS = $(check_PROGRAMS)
 #LDADD = -lmatrix
 
-test_base_SOURCES = test_base.cpp
-test_exceptions_SOURCES = test_exceptions.cpp
+01_vector_base_SOURCES = 01_vector_base.cpp
+02_vector_exceptions_SOURCES = 02_vector_exceptions.cpp
+03_matrix_base_SOURCES = 03_matrix_base.cpp
