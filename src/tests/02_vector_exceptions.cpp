@@ -27,10 +27,6 @@ int main (int argc, char **argv)
         excount ++;
     }
 
-    if (excount != 3) {
-        exit(EXIT_FAILURE);
-    } else {
-        exit(EXIT_SUCCESS);
-    }
+    exit(excount == 3 ? EXIT_SUCCESS : EXIT_FAILURE);
 }
 

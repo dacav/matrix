@@ -47,6 +47,24 @@ namespace matrix {
         }
     }
 
+    template <typename T>
+    unsigned Matrix<T>::get_rows ()
+    {
+        return rows;
+    }
+
+    template <typename T>
+    unsigned Matrix<T>::get_cols ()
+    {
+        return cols;
+    }
+
+    template <typename T>
+    T & Matrix<T>::quick_access (unsigned r, unsigned c)
+    {
+        return values[cols * r + c];
+    }
+
 }
 
 #endif // __defined_headers_matrix_impl_hpp

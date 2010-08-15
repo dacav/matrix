@@ -4,21 +4,27 @@
 
 using namespace std;
 
+static
+unsigned hash (unsigned r, unsigned c)
+{
+	return (r << 2) * (c + 1);
+}
+
 int main (int argc, char **argv)
 {
-	matrix::Matrix<unsigned> mx(3, 3);
+	matrix::Matrix<unsigned> mx(3, 4);
 
-    unsigned i, j;
+    unsigned r, c;
 
-    for (i = 0; i < 3; i ++) {
-        for (j = 0; j < 3; j ++) {
-            mx[i][j] = i * j;
+    for (r = 0; r < mx.get_rows(); r ++) {
+        for (c = 0; c < mx.get_cols(); c ++) {
+            mx[r][c] = hash(r, c);
         }
     }
 
-    for (i = 0; i < 3; i ++) {
-        for (j = 0; j < 3; j ++) {
-            assert(mx[i][j] == (i * j));
+    for (r = 0; r < mx.get_rows(); r ++) {
+        for (c = 0; c < mx.get_cols(); c ++) {
+            assert(mx[r][c] == hash(r, c));
         }
     }
 

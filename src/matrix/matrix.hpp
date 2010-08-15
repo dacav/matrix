@@ -33,7 +33,13 @@ namespace matrix {
 
             RowAccess<T> operator[] (unsigned row);
 
+            unsigned get_rows ();
+            unsigned get_cols ();
+
+
         private:
+            T & quick_access (unsigned row, unsigned col);
+
             unsigned rows;
             unsigned cols;
             T * values;
