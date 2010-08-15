@@ -46,8 +46,7 @@ namespace matrix {
         if (i < dim) {
             return vals[i];
         } else {
-            VectorError err("Out of bound");
-            throw err;
+            throw VectorError("Out of boundary");
         }
     }
 

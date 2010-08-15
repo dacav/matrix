@@ -1,27 +1,50 @@
 #ifndef __defined_headers_matrix_impl_hpp
 #define __defined_headers_matrix_impl_hpp
 
+#include <iostream>
+using namespace std;
+
 namespace matrix {
 
     template <typename T>
-    Matrix<T>::Matrix (unsigned nc, unsigned nr)
-             : Vector<Vector<T> *>(nc)
+    Matrix<T>::Matrix (unsigned r, unsigned c)
     {
-        unsigned i;
+        values = new T[r * c];
+        rows = r;
+        cols = c;
+    }
 
-        nrows = nc;
-        for (i = 0; i < nc; i ++) {
-            Vector<Vector<T> *>::operator[](i) = new Vector<T>(nr);
+    template <typename T>
+    Matrix<T>::~Matrix ()
+    {
+        delete[] values;
+    }
+
+    template <typename T>
+    RowAccess<T>::RowAccess (T *vals, unsigned c)
+        : values(vals), cols(c)
+    {
+    }
+
+    template <typename T>
+    T & RowAccess<T>::operator[] (unsigned i)
+        throw (MatrixError)
+    {
+        if (i < cols) {
+            return values[i];
+        } else {
+            throw MatrixError("Out of column boundary");
         }
     }
 
     template <typename T>
-    Vector<T> & Matrix<T>::operator[] (unsigned row)
+    RowAccess<T> Matrix<T>::operator[] (unsigned row)
     {
-        Vector<T> *ret;
-
-        ret = Vector<Vector<T> *>::operator[](row);
-        return *ret;
+        if (row < rows) {
+            return RowAccess<T>(values + cols * row, cols);
+        } else {
+            throw MatrixError("Out of row boundary");
+        }
     }
 
 }
