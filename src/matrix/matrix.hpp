@@ -13,16 +13,7 @@ namespace matrix {
             MatrixError (const char *msg) : std::logic_error(msg) {}
     };
 
-    template <typename T>
-    class RowAccess
-    {
-        public:
-            RowAccess (T * values, unsigned cols);
-            T & operator[] (unsigned i) throw (MatrixError);
-        private:
-            T * values;
-            unsigned cols;
-    };
+    template <typename T> class RowAccess;
 
     template <typename T>
     class Matrix

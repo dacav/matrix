@@ -7,6 +7,17 @@ using namespace std;
 namespace matrix {
 
     template <typename T>
+    class RowAccess
+    {
+        public:
+            RowAccess (T * values, unsigned cols);
+            T & operator[] (unsigned i) throw (MatrixError);
+        private:
+            T * values;
+            unsigned cols;
+    };
+
+    template <typename T>
     Matrix<T>::Matrix (unsigned r, unsigned c)
     {
         values = new T[r * c];
