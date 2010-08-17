@@ -3,8 +3,6 @@
 
 #include <stdexcept>
 
-#include "vector.hpp"
-
 namespace matrix {
 
     class MatrixError : public std::logic_error
@@ -20,16 +18,25 @@ namespace matrix {
     {
         public:
             Matrix (unsigned rows, unsigned cols);
+            Matrix (const Matrix<T> &copy);
+
             virtual ~Matrix ();
 
-            RowAccess<T> operator[] (unsigned row);
+            Matrix<T> & operator= (const Matrix<T> &copy)
+                throw (MatrixError);
+            RowAccess<T> operator[] (unsigned row) const
+                throw (MatrixError);
 
-            unsigned get_rows ();
-            unsigned get_cols ();
+            unsigned get_rows () const;
+            unsigned get_cols () const;
 
+            Matrix<T> operator* (const Matrix<T> &mx)
+                throw (MatrixError);
 
-        private:
-            T & quick_access (unsigned row, unsigned col);
+        protected:
+            T & quick_access (unsigned row, unsigned col) const;
+
+            void copy (const Matrix<T> &c);
 
             unsigned rows;
             unsigned cols;

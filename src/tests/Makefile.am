@@ -23,7 +23,8 @@ AM_LDDFLAGS = -L$(top_srcdir)/src/ -L./ -L../
 check_PROGRAMS = 01_vector_base \
                  02_vector_exceptions \
                  03_matrix_base \
-                 04_matrix_exceptions
+                 04_matrix_exceptions \
+                 05_matrix_product
 
 TESTS = $(check_PROGRAMS)
 #LDADD = -lmatrix
@@ -32,3 +33,4 @@ TESTS = $(check_PROGRAMS)
 02_vector_exceptions_SOURCES = 02_vector_exceptions.cpp
 03_matrix_base_SOURCES = 03_matrix_base.cpp
 04_matrix_exceptions_SOURCES = 04_matrix_exceptions.cpp
+05_matrix_product_SOURCES = 05_matrix_product.cpp
